@@ -1,0 +1,205 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celestia | Astrology & Birth Chart</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <a class="logo" href="#">✦ Celestia</a>
+    <nav>
+      <a href="#birth-chart">Birth Chart</a>
+      <a href="#reading">Your Reading</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">✧ YOUR STORY IN THE STARS ✧</p>
+        <h1>The universe is vast.<br><span>So are you.</span></h1>
+        <p class="intro">
+          Discover your zodiac sign, explore astrology-inspired
+          interpretations, and reflect on the year ahead.
+        </p>
+        <a href="#birth-chart" class="button">Discover Your Stars ↓</a>
+      </div>
+
+      <div class="planet-art" aria-label="Decorative planet">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="planet">✦</div>
+        <span class="star star-one">✧</span>
+        <span class="star star-two">✦</span>
+        <span class="star star-three">☾</span>
+      </div>
+    </section>
+
+    <section id="birth-chart" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">YOUR COSMIC BEGINNING</p>
+        <h2>Your birth. <span>Your universe.</span></h2>
+        <p>Enter your birth details to create your personal astrology reading.</p>
+      </div>
+
+      <form id="birth-form" class="birth-card">
+        <label for="full-name">Your name <small>(optional)</small></label>
+        <input id="full-name" type="text" placeholder="Enter your name">
+
+        <label for="birth-date">Date of birth *</label>
+        <input id="birth-date" type="date" required>
+
+        <div class="two-columns">
+          <div>
+            <label for="birth-time">Time of birth</label>
+            <input id="birth-time" type="time">
+          </div>
+          <div>
+            <label for="birth-year">Reading year</label>
+            <select id="birth-year"></select>
+          </div>
+        </div>
+
+        <label for="birth-place">Place of birth <small>(optional)</small></label>
+        <input id="birth-place" type="text" placeholder="City, country">
+
+        <label for="focus">What would you like to explore?</label>
+        <select id="focus">
+          <option value="growth">Personal growth</option>
+          <option value="love">Love and relationships</option>
+          <option value="career">Career and purpose</option>
+          <option value="creativity">Creativity and courage</option>
+          <option value="wellbeing">Rest and wellbeing</option>
+        </select>
+
+        <p class="privacy">✧ Your details are processed in this browser and are not sent to a server.</p>
+        <button class="button submit-button" type="submit">
+          Reveal My Reading ✦
+        </button>
+        <p id="error-message" class="error" role="alert"></p>
+      </form>
+    </section>
+
+    <section id="reading" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">YOUR PERSONAL COSMIC NOTE</p>
+        <h2>A mirror for <span>your journey.</span></h2>
+      </div>
+
+      <div id="empty-state" class="empty-state">
+        <div class="moon">☾</div>
+        <h3>Your reading awaits among the stars.</h3>
+        <p>Enter your birthday above to begin.</p>
+      </div>
+
+      <div id="results" hidden>
+        <div class="result-banner">
+          <span>YOUR CELESTIAL PROFILE</span>
+          <span id="result-year"></span>
+        </div>
+
+        <div class="result-grid">
+          <article class="result-card zodiac-card">
+            <div id="sign-symbol" class="sign-symbol">♈</div>
+            <p class="eyebrow">YOUR WESTERN SUN SIGN</p>
+            <h3 id="sign-name">Aries</h3>
+            <p id="sign-dates" class="muted"></p>
+            <div class="tags">
+              <span id="sign-element"></span>
+              <span id="sign-modality"></span>
+            </div>
+            <p id="sign-description"></p>
+          </article>
+
+          <article class="result-card year-card">
+            <p class="eyebrow">YEAR-AHEAD REFLECTION</p>
+            <h3 id="year-title">A year of becoming</h3>
+            <p id="year-reading"></p>
+            <div class="focus-box">
+              <span class="focus-symbol">✧</span>
+              <div>
+                <h4 id="focus-title">Your focus</h4>
+                <p id="focus-reading"></p>
+              </div>
+            </div>
+            <p class="disclaimer">For reflection and entertainment, not a factual prediction.</p>
+          </article>
+        </div>
+
+        <div class="reflection-grid">
+          <article class="result-card">
+            <span class="mini-symbol">☼</span>
+            <h3>Your strengths</h3>
+            <p id="strengths"></p>
+          </article>
+          <article class="result-card">
+            <span class="mini-symbol">☾</span>
+            <h3>A gentle reminder</h3>
+            <p id="reminder"></p>
+          </article>
+          <article class="result-card">
+            <span class="mini-symbol">✦</span>
+            <h3>Your intention</h3>
+            <p id="intention"></p>
+          </article>
+        </div>
+
+        <div class="birth-summary">
+          <p class="eyebrow">YOUR BIRTH DETAILS</p>
+          <p id="summary"></p>
+          <button type="button" id="print-button" class="outline-button">
+            Print Reading
+          </button>
+        </div>
+
+        <p class="accuracy-note">
+          <strong>Important:</strong> This demo calculates a conventional
+          Western tropical Sun sign from your birth date. It does not calculate
+          the Moon sign, Ascendant, planetary positions, houses, or aspects.
+          These require astronomical ephemeris calculations and, for some
+          placements, accurate birth time and location. Astrology has not been
+          scientifically established as a reliable way to predict personality
+          or future events. Use these interpretations for entertainment and
+          self-reflection, not as a substitute for evidence-based decisions.
+        </p>
+      </div>
+    </section>
+
+    <section id="about" class="section about-section">
+      <div class="section-heading">
+        <p class="eyebrow">A NOTE ON THE COSMOS</p>
+        <h2>Wonder with <span>both feet on Earth.</span></h2>
+      </div>
+      <div class="about-grid">
+        <article>
+          <span class="number">01</span>
+          <h3>Your birthday</h3>
+          <p>Your birthday identifies a conventional Western Sun sign. Boundary dates can vary slightly by year and time zone.</p>
+        </article>
+        <article>
+          <span class="number">02</span>
+          <h3>Your birth time</h3>
+          <p>Birth time and birthplace help calculate the Ascendant and houses. This demo does not calculate those placements.</p>
+        </article>
+        <article>
+          <span class="number">03</span>
+          <h3>Your own journey</h3>
+          <p>Use astrology-inspired readings as prompts for reflection, not as a fixed description of who you are or what will happen.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo" href="#">✦ Celestia</a>
+    <p>Made for wonder, guided by curiosity.</p>
+    <span>© <span id="footer-year"></span> Celestia</span>
+  </footer>
+</body>
+</html>
+```
