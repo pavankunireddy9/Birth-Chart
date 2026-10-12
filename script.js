@@ -1,4 +1,4 @@
-```javascript
+
 "use strict";
 
 // Zodiac sign data and astrology-inspired interpretations.
@@ -300,4 +300,3 @@ document.getElementById("print-button").addEventListener("click", function () {
 });
 
 initializeYears();
-```
